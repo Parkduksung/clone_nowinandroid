@@ -1,16 +1,20 @@
+
 pluginManagement {
+    includeBuild("build-logic") // 여기를 지정해줘야 디렉터리가 파란색으로 변함.
     repositories {
+        google()
+        mavenCentral()
         gradlePluginPortal()
-        google()
-        mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
 }
+
+
 rootProject.name = "CloneNowInAndroid"
-include ':app'
+include(":app")
