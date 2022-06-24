@@ -14,6 +14,6 @@ java {
 
 //이부분을 해줘야 convention 에서 dsl 을 사용할 수 있다.
 dependencies {
-    implementation("com.android.tools.build:gradle:7.2.1")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
+    implementation(libs.android.gradlePlugin)
+    implementation(libs.kotlin.gradlePlugin)
 }
