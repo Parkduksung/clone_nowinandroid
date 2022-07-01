@@ -2,6 +2,7 @@ plugins {
     id("clonenowinandroid.android.library")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -16,6 +17,7 @@ android {
 
 dependencies {
     implementation(project(":core-common"))
+    implementation(project(":core-model"))
     testImplementation(project(":core-testing"))
 
     implementation(libs.kotlinx.coroutines.android)

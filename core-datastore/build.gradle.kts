@@ -1,23 +1,29 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("clonenowinandroid.android.library")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("kotlinx-serialization")
+
 }
 
+android {
+    defaultConfig {
+        consumerProguardFiles("consumer-proguard-rules.pro")
+    }
+
+}
 
 dependencies {
     implementation(project(":core-common"))
-    implementation(project(":core-model"))
-    implementation(project(":core-network"))
-    implementation(project(":core-datastore"))
-
     testImplementation(project(":core-testing"))
 
-    implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.androidx.dataStore.core)
+    implementation(libs.protobuf.kotlin.lite)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
 }
