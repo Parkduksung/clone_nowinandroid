@@ -1,15 +1,13 @@
 plugins {
-    kotlin("android")
-    id("com.android.application")
+    id("clonenowinandroid.android.application")
+    id("clonenowinandroid.android.application.compose")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 32
-
     defaultConfig {
         applicationId = "com.example.clonenowinandroid"
-        minSdk = 21
-        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -26,31 +24,34 @@ android {
         }
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+    packagingOptions {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
-
-    buildFeatures {
-        dataBinding = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.compose.ui:ui:1.1.0-beta01")
-    implementation("androidx.compose.material:material:1.1.0-beta01")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.1.0-beta01")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.0-beta01")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.1.0-beta01")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.1.0-beta01")
+    implementation(project(":core-ui"))
+
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.window.manager)
+    implementation(libs.material3)
+    implementation(libs.androidx.profileinstaller)
+
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.svg)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
+
 }
