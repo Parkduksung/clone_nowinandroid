@@ -39,6 +39,9 @@ android {
 dependencies {
     implementation(project(":core-ui"))
 
+    implementation(project(":core-navigation"))
+    implementation(project(":feature_foryou"))
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
