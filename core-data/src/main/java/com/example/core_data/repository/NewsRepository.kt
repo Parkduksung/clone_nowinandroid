@@ -17,32 +17,23 @@
 package com.example.core_data.repository
 
 import com.example.core_data.Syncable
-import com.example.core_model.Topic
+import com.example.core_model.NewsResource
 import kotlinx.coroutines.flow.Flow
 
-interface TopicsRepository : Syncable {
+/**
+ * Data layer implementation for [NewsResource]
+ */
+interface NewsRepository : Syncable {
     /**
-     * Gets the available topics as a stream
+     * Returns available news resources as a stream.
      */
-    fun getTopicsStream(): Flow<List<Topic>>
+    fun getNewsResourcesStream(): Flow<List<NewsResource>>
 
     /**
-     * Gets data for a specific topic
+     * Returns available news resources as a stream filtered by authors or topics.
      */
-    fun getTopic(id: String): Flow<Topic>
-
-    /**
-     * Sets the user's currently followed topics
-     */
-    suspend fun setFollowedTopicIds(followedTopicIds: Set<String>)
-
-    /**
-     * Toggles the user's newly followed/unfollowed topic
-     */
-    suspend fun toggleFollowedTopicId(followedTopicId: String, followed: Boolean)
-
-    /**
-     * Returns the users currently followed topics
-     */
-    fun getFollowedTopicIdsStream(): Flow<Set<String>>
+    fun getNewsResourcesStream(
+        filterAuthorIds: Set<String> = emptySet(),
+        filterTopicIds: Set<String> = emptySet(),
+    ): Flow<List<NewsResource>>
 }

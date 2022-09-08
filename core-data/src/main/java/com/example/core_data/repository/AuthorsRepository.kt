@@ -17,32 +17,32 @@
 package com.example.core_data.repository
 
 import com.example.core_data.Syncable
-import com.example.core_model.Topic
+import com.example.core_model.Author
 import kotlinx.coroutines.flow.Flow
 
-interface TopicsRepository : Syncable {
+interface AuthorsRepository : Syncable {
     /**
-     * Gets the available topics as a stream
+     * Gets the available Authors as a stream
      */
-    fun getTopicsStream(): Flow<List<Topic>>
+    fun getAuthorsStream(): Flow<List<Author>>
 
     /**
-     * Gets data for a specific topic
+     * Gets data for a specific author
      */
-    fun getTopic(id: String): Flow<Topic>
+    fun getAuthorStream(id: String): Flow<Author>
 
     /**
-     * Sets the user's currently followed topics
+     * Sets the user's currently followed authors
      */
-    suspend fun setFollowedTopicIds(followedTopicIds: Set<String>)
+    suspend fun setFollowedAuthorIds(followedAuthorIds: Set<String>)
 
     /**
-     * Toggles the user's newly followed/unfollowed topic
+     * Toggles the user's newly followed/unfollowed author
      */
-    suspend fun toggleFollowedTopicId(followedTopicId: String, followed: Boolean)
+    suspend fun toggleFollowedAuthorId(followedAuthorId: String, followed: Boolean)
 
     /**
-     * Returns the users currently followed topics
+     * Returns the users currently followed authors
      */
-    fun getFollowedTopicIdsStream(): Flow<Set<String>>
+    fun getFollowedAuthorIdsStream(): Flow<Set<String>>
 }
