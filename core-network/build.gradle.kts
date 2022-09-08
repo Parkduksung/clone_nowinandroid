@@ -3,6 +3,7 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("kotlinx-serialization")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -13,6 +14,16 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("staging") {
+            java.srcDir("src/release/java")
+        }
+    }
+
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
