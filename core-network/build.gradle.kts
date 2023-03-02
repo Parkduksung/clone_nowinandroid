@@ -27,7 +27,7 @@ secrets {
 }
 
 dependencies {
-    implementation(project(":core-common"))
+    implementation(project(":core:core-common"))
     implementation(project(":core-model"))
     testImplementation(project(":core-testing"))
 

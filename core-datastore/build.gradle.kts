@@ -38,7 +38,7 @@ protobuf {
 }
 
 dependencies {
-    implementation(project(":core-common"))
+    implementation(project(":core:core-common"))
     testImplementation(project(":core-testing"))
 
     implementation(libs.kotlinx.coroutines.android)

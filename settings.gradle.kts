@@ -26,7 +26,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "CloneNowInAndroid"
 include(":app")
-include(":core-common")
+include(":core:core-common")
 include(":core-testing")
 include(":core-data")
 include(":core-network")

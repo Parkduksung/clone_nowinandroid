@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
 
-    implementation(project(":core-common"))
+    implementation(project(":core:core-common"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
